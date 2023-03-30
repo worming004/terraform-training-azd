@@ -13,9 +13,3 @@ variable "repositories" {
   }))
 }
 
-
-variable "org_url" {
-  description = "url of organisation"
-  type        = string
-  default     = "https://dev.azure.com/Worming"
-}

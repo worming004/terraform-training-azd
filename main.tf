@@ -15,7 +15,6 @@ locals {
   }
 
   project = {
-
     project_name        = "MySuperProject"
     project_description = "Very Description"
   }
@@ -29,7 +28,6 @@ module "single_portfolio" {
   source = "./modules/portfolio"
 
   project = local.project
-  org_url = "https://dev.azure.com/Worming"
 
   repositories = local.repositories
 }
