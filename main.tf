@@ -7,24 +7,38 @@ terraform {
   }
 }
 
+locals {
+  repositories = {
+    initial_repo = {
+      repository_name = "initial_repo"
+    }
+  }
+
+  project = {
+
+    project_name        = "MySuperProject"
+    project_description = "Very Description"
+  }
+}
+
 provider "azuredevops" {
   org_service_url = "https://dev.azure.com/Worming"
 }
 
-resource "azuredevops_project" "my_project" {
-  name = "MyProject"
-  visibility = "private"
-  version_control = "Git"
-  description = "Very Description"
+module "single_portfolio" {
+  source = "./modules/portfolio"
+
+  project = local.project
+  org_url = "https://dev.azure.com/Worming"
+
+  repositories = local.repositories
 }
 
+module "pipelines" {
+  for_each = module.single_portfolio.repositories
+  source   = "./modules/ci"
 
-resource "azuredevops_git_repository" "initial_repo" {
-  project_id = azuredevops_project.my_project.id
-  name       = "second_repo"
-  initialization {
-    init_type = "Clean"
-  }
+  project_id = module.single_portfolio.project_id
+
+  repository_id = each.value.repository_id
 }
-
-resource "azuredevops_"
