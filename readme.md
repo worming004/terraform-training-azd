@@ -1,5 +1,6 @@
-# Examples 
+# Examples pour m'aider a construire mon entrainement
 
+provenant du bouquin __terraform & running__ :
 https://github.com/brikis98/terraform-up-and-running-code
 
 # Doc 
