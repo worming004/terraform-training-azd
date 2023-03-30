@@ -9,3 +9,12 @@ https://registry.terraform.io/providers/microsoft/azuredevops/latest/docs
 # Configuration
 
 Utilisez la variable d'environment AZDO_PERSONAL_ACCESS_TOKEN avec `export AZDO_PERSONAL_ACCESS_TOKEN=<votre token>`
+
+# Launch
+
+apres avoir set votre token:
+
+```
+terraform init
+terraform apply
+```
